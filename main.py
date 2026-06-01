@@ -159,9 +159,7 @@ def train_cgan(train_loader, test_loader):
     fixed_noise = torch.randn(64, config.latent_dim, device=config.device)
     fixed_labels = torch.randint(0, config.num_classes, (64,), device=config.device)
 
-    print("\n" + "=" * 60)
     print("Начало обучения Conditional GAN")
-    print("=" * 60 + "\n")
 
     for epoch in range(1, config.n_epochs + 1):
         epoch_g_loss = 0
@@ -353,9 +351,7 @@ def evaluate_with_classifier(generator, test_loader):
     Обучает простой CNN на сгенерированных данных
     и проверяет, насколько точно генератор создаёт заданные классы
     """
-    print("\n" + "=" * 60)
     print("Оценка качества: обучение классификатора на сгенерированных данных")
-    print("=" * 60)
 
     class SimpleClassifier(nn.Module):
         def __init__(self):
@@ -452,9 +448,7 @@ def evaluate_with_classifier(generator, test_loader):
 
 #7. ЗАПУСК ВСЕГО ПРОЕКТА
 def main():
-    print("=" * 60)
-    print("ПРОЕКТ: ГЕНЕРАЦИЯ ЦИФР С КОНТРОЛЕМ СТИЛЯ (Conditional GAN)")
-    print("=" * 60)
+    print("ГЕНЕРАЦИЯ ЦИФР С КОНТРОЛЕМ СТИЛЯ (Conditional GAN)")
 
     # 1. Загрузка данных
     train_loader, test_loader = load_data()

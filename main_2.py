@@ -155,9 +155,7 @@ def train_cgan(train_loader, test_loader):
     fixed_noise = torch.randn(64, config.latent_dim, device=config.device)
     fixed_labels = torch.randint(0, config.num_classes, (64,), device=config.device)
 
-    print("\n" + "=" * 60)
     print("Начало обучения Conditional GAN на EMNIST Digits (0-9)")
-    print("=" * 60 + "\n")
 
     for epoch in range(1, config.n_epochs + 1):
         epoch_g_loss = 0
@@ -331,9 +329,7 @@ def style_interpolation(generator, class_id, num_steps=10):
 
 # 6. ОЦЕНКА КАЧЕСТВА
 def evaluate_with_classifier(generator, test_loader):
-    print("\n" + "=" * 60)
     print("Оценка качества: обучение классификатора на сгенерированных цифрах")
-    print("=" * 60)
 
     class SimpleClassifier(nn.Module):
         def __init__(self, num_classes=10):
@@ -429,9 +425,7 @@ def evaluate_with_classifier(generator, test_loader):
 
 # 7. ЗАПУСК
 def main():
-    print("=" * 60)
-    print("ПРОЕКТ: ГЕНЕРАЦИЯ ЦИФР С КОНТРОЛЕМ СТИЛЯ (EMNIST Digits)")
-    print("=" * 60)
+    print("ГЕНЕРАЦИЯ ЦИФР С КОНТРОЛЕМ СТИЛЯ (EMNIST Digits)")
 
     train_loader, test_loader = load_data()
     generator, discriminator, history = train_cgan(train_loader, test_loader)
@@ -449,11 +443,11 @@ def main():
     print("\n" + "=" * 60)
     print("РЕЗУЛЬТАТЫ ПРОЕКТА")
     print("=" * 60)
-    print(f"✅ Генератор обучен за {config.n_epochs} эпох")
-    print(f"✅ Датасет: EMNIST Digits (280k цифр 0-9)")
-    print(f"✅ Точность классификатора: {accuracy:.4f}")
-    print(f"✅ Примеры сохранены в {config.samples_dir}")
-    print(f"✅ Модели сохранены в {config.models_dir}")
+    print(f"Генератор обучен за {config.n_epochs} эпох")
+    print(f"Датасет: EMNIST Digits (280k цифр 0-9)")
+    print(f"Точность классификатора: {accuracy:.4f}")
+    print(f"Примеры сохранены в {config.samples_dir}")
+    print(f"Модели сохранены в {config.models_dir}")
     print("=" * 60)
 
 
